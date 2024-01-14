@@ -4,6 +4,8 @@ import Container from "./components/List";
 import data from "./utils/data";
 import { useState } from "react";
 import List from "./components/List";
+import Reload from "./components/Reload";
+
 const App = () => {
   const [people, setPeople] = useState(data);
   return (
@@ -18,14 +20,17 @@ const App = () => {
             return <List key={person.id} person={person} />;
           })}
         </div>
-        <button
-          className="w-[200px] bg-red-400 text-xl text-gray-50 rounded-lg active:scale-[0.98]"
-          onClick={() => {
-            setPeople([]);
-          }}
-        >
-          Clear All
-        </button>
+        <div className="flex items-center justify-between gap-3">
+          <button
+            className="w-[170px] bg-red-600 text-xl text-gray-50 rounded-lg active:scale-[0.98]"
+            onClick={() => {
+              setPeople([]);
+            }}
+          >
+            Clear All
+          </button>
+          <Reload />
+        </div>
       </div>
     </main>
   );
